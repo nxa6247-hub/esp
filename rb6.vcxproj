@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{80d3909a-dbe6-40c2-8599-13d89c6db34f}</ProjectGuid>
+    <RootNamespace>R6Snake</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>DX12-Internal-Example</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros">
+    <ZydisDir>$(ProjectDir)..\..\! 1fixed_r6sourceinternal\Dependencies\Zydis</ZydisDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\Intermediate</IntDir>
+    <TargetName>r6-snake</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\Intermediate</IntDir>
+    <TargetName>r6-internal-example</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;R6SNAKE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;R6SNAKE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;R6SNAKE_EXPORTS;_WINDOWS;_USRDLL;ZYDIS_STATIC_BUILD;ZYCORE_STATIC_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ZydisDir)\include;$(ZydisDir)\src;$(ZydisDir)\dependencies\zycore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;R6SNAKE_EXPORTS;_WINDOWS;_USRDLL;ZYDIS_STATIC_BUILD;ZYCORE_STATIC_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ZydisDir)\include;$(ZydisDir)\src;$(ZydisDir)\dependencies\zycore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="directx\d3d12hook.cpp" />
+    <ClCompile Include="directx\Hook\hook.cpp" />
+    <ClCompile Include="directx\Hook\InputHook\input_hook.cpp" />
+    <ClCompile Include="directx\Render\Interface\interface.cpp" />
+    <ClCompile Include="directx\Render\Render.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="External\imgui\imgui.cpp" />
+    <ClCompile Include="External\imgui\imgui_demo.cpp" />
+    <ClCompile Include="External\imgui\imgui_draw.cpp" />
+    <ClCompile Include="External\imgui\imgui_impl_dx10.cpp" />
+    <ClCompile Include="External\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="External\imgui\imgui_impl_dx12.cpp" />
+    <ClCompile Include="External\imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="External\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="External\imgui\imgui_tables.cpp" />
+    <ClCompile Include="External\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="External\kiero\kiero.cpp" />
+    <ClCompile Include="Rainbow Six Siege\fn\visuals_renderables.cpp" />
+    <ClCompile Include="Rainbow Six Siege\fn\weapon_nospread.cpp" />
+    <ClCompile Include="scimitar\hooks\fn\entity_hook.cpp" />
+    <ClCompile Include="$(ZydisDir)\src\Decoder.c" />
+    <ClCompile Include="$(ZydisDir)\src\DecoderData.c" />
+    <ClCompile Include="$(ZydisDir)\src\Disassembler.c" />
+    <ClCompile Include="$(ZydisDir)\src\Encoder.c" />
+    <ClCompile Include="$(ZydisDir)\src\EncoderData.c" />
+    <ClCompile Include="$(ZydisDir)\src\Formatter.c" />
+    <ClCompile Include="$(ZydisDir)\src\FormatterATT.c" />
+    <ClCompile Include="$(ZydisDir)\src\FormatterBase.c" />
+    <ClCompile Include="$(ZydisDir)\src\FormatterBuffer.c" />
+    <ClCompile Include="$(ZydisDir)\src\FormatterIntel.c" />
+    <ClCompile Include="$(ZydisDir)\src\MetaInfo.c" />
+    <ClCompile Include="$(ZydisDir)\src\Mnemonic.c" />
+    <ClCompile Include="$(ZydisDir)\src\Register.c" />
+    <ClCompile Include="$(ZydisDir)\src\Segment.c" />
+    <ClCompile Include="$(ZydisDir)\src\SharedData.c" />
+    <ClCompile Include="$(ZydisDir)\src\String.c" />
+    <ClCompile Include="$(ZydisDir)\src\Utils.c" />
+    <ClCompile Include="$(ZydisDir)\src\Zydis.c" />
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\Allocator.c" />
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\Bitset.c" />
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\Format.c" />
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\List.c" />
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\String.c">
+      <ObjectFileName>$(IntDir)zycore_string.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\Vector.c" />
+    <ClCompile Include="$(ZydisDir)\dependencies\zycore\src\Zycore.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="config.hpp" />
+    <ClInclude Include="directx\d3d12hook.hpp" />
+    <ClInclude Include="directx\Hook\hook.hpp" />
+    <ClInclude Include="directx\Hook\InputHook\input_hook.hpp" />
+    <ClInclude Include="directx\Render\Interface\interface.hpp" />
+    <ClInclude Include="directx\Render\Render.hpp" />
+    <ClInclude Include="External\imgui\imconfig.h" />
+    <ClInclude Include="External\imgui\imgui.h" />
+    <ClInclude Include="External\imgui\imgui_impl_dx10.h" />
+    <ClInclude Include="External\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="External\imgui\imgui_impl_dx12.h" />
+    <ClInclude Include="External\imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="External\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="External\imgui\imgui_internal.h" />
+    <ClInclude Include="External\imgui\imstb_rectpack.h" />
+    <ClInclude Include="External\imgui\imstb_textedit.h" />
+    <ClInclude Include="External\imgui\imstb_truetype.h" />
+    <ClInclude Include="External\kiero\kiero.hpp" />
+    <ClInclude Include="External\Minhook\include\MinHook.h" />
+    <ClInclude Include="Rainbow Six Siege\rainbow6.hpp" />
+    <ClInclude Include="scimitar\engine\havok_math.hpp" />
+    <ClInclude Include="scimitar\engine\ida_defs.hpp" />
+    <ClInclude Include="scimitar\hooks\hooks.hpp" />
+    <ClInclude Include="scimitar\scimitar.hpp" />
+    <ClInclude Include="utils\spoofcall\spoofcall.h" />
+    <ClInclude Include="utils\debug\log.hpp" />
+    <ClInclude Include="utils\pattern\pattern.hpp" />
+    <ClInclude Include="utils\utils.h" />
+    <ClInclude Include="utils\xorstr\xorstr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="utils\asm\spoofcall.asm">
+      <FileType>Document</FileType>
+    </MASM>
+    <MASM Include="utils\asm\vmprotect.asm">
+      <FileType>Document</FileType>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="External\imgui\.gitkeep" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="External\imgui\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="External\Minhook\lib\libMinHook.x64.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>
